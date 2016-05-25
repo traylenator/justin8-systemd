@@ -12,4 +12,4 @@ env:
     - PUPPET_VERSION="3.8.4"
     - PUPPET_VERSION="4.2.1"
 
-script: bundle exec rake validate && bundle exec rake lint && bundle exec rake spec SPEC_OPTS='--format documentation && bundle exec rake metadata'
+script: bundle exec rake validate && bundle exec rake lint && bundle exec rake spec SPEC_OPTS='--format documentation && bundle exec rake metadata_lint'
