@@ -1,5 +1,7 @@
 [Unit]
+<% if @description -%>
 Description=<%= @description %>
+<% end -%>
 <% if !@defaultdeps -%>
 DefaultDependencies=no
 <% end -%>
@@ -17,12 +19,23 @@ After=<%= @after.sort.join(' ') %>
 <% end -%>
 
 [Service]
+<% if @execstart -%>
 ExecStart=<%= @execstart %>
+<% end -%>
 <% if defined?(@execreload) -%>
 ExecReload=<%= @execreload %>
 <% end -%>
+<% if defined?(@execstartpost) -%>
+ExecStartPost=<%= @execstartpost %>
+<% end -%>
+<% if defined?(@execstartpre) -%>
+ExecStartPre=<%= @execstartpre %>
+<% end -%>
 <% if defined?(@execstop) -%>
 ExecStop=<%= @execstop %>
+<% end -%>
+<% if defined?(@execstoppost) -%>
+ExecStopPost=<%= @execstoppost %>
 <% end -%>
 <% if @remainafterexit -%>
 RemainAfterExit=yes
@@ -30,14 +43,26 @@ RemainAfterExit=yes
 <% if defined?(@workingdir) -%>
 WorkingDirectory=<%= @workingdir %>
 <% end -%>
+<% if @restart -%>
 Restart=<%= @restart %>
+<% end -%>
 <% if defined?(@restartsec) -%>
 RestartSec=<%= @restartsec %>
 <% end -%>
-SyslogIdentifier=<%= @servicename %>
+<% if @syslogidentifier -%>
+SyslogIdentifier=<%= @syslogidentifier %>
+<% end -%>
+<% if @user -%>
 User=<%= @user %>
+<% end -%>
+<% if @group -%>
 Group=<%= @group %>
+<% end -%>
+<% if @trpe -%>
 Type=<%= @type %>
+<% end -%>
 
 [Install]
+<% if @wantedby -%>
 WantedBy=<%= @wantedby.sort.join(' ') %>
+<% end -%>

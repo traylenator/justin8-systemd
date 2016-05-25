@@ -1,7 +1,8 @@
 #
-class systemd {
+class systemd (
+  $unit_path = $systemd::params::unit_path,
+) inherits systemd::params {
 
-  include systemd::params
 
   if ( str2bool($::systemd_available) ) {
     exec { 'systemd-daemon-reload':
